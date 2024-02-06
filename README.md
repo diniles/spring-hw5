@@ -24,3 +24,5 @@ Docker commands:
 `sudo docker build -t mynotes-db .`
 
 `sudo docker run --name mynotes-db -p 5432:5432 -d mynotes-db`
+
+After start go to [http://localhost:8080/api/tasks](http://localhost:8080/api/tasks)

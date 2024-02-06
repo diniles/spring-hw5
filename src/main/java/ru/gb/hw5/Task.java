@@ -14,7 +14,7 @@ public class Task {
     @Column(nullable = false)
     private String status;
     @Column(nullable = false)
-    private Date creationDate;
+    private Date date;
 
     public void setId(Long id) {
         this.id = id;
@@ -40,12 +40,12 @@ public class Task {
         this.status = status;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setDate(Date creationDate) {
+        this.date = creationDate;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Task {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", status=" + status +
-                ", creationDate=" + creationDate +
+                ", creationDate=" + date +
                 '}';
     }
 }

@@ -15,7 +15,7 @@ public class TaskService {
 
     public Task createTask(Task task) {
         task.setStatus("NOT_STARTED");
-        task.setCreationDate(new java.util.Date());
+        task.setDate(new java.util.Date());
         return taskRepository.save(task);
     }
 
@@ -37,18 +37,22 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
-    public List<Task> getAllTasks(String state) {
-        if (state == null || state.isEmpty()) {
-            return taskRepository.findAllByOrderByDateAsc();
-        }
-        return taskRepository.findAllByStateIsOrderByDate(state);
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();
     }
 
-    public Optional<Task> updateTaskState(Long id, String state) {
+    public List<Task> getAllTasksWithStatus(String status) {
+        if (status == null || status.isEmpty()) {
+            return taskRepository.findAllByOrderByDateAsc();
+        }
+        return taskRepository.findAllByStatusIsOrderByDate(status);
+    }
+
+    public Optional<Task> updateTaskStatus(Long id, String status) {
         Optional<Task> taskToUpdate = taskRepository.findById(id);
         if (taskToUpdate.isPresent()) {
             Task task = taskToUpdate.get();
-            task.setStatus(state);
+            task.setStatus(status);
             return Optional.of(taskRepository.save(task));
         }
         return Optional.empty();
