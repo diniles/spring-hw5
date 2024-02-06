@@ -12,7 +12,7 @@ public class Task {
     @Column(nullable = false)
     private String title;
     @Column(nullable = false)
-    private Status status;
+    private String status;
     @Column(nullable = false)
     private Date creationDate;
 
@@ -28,11 +28,11 @@ public class Task {
         this.title = title;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
