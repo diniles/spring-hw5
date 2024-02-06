@@ -1,25 +1,23 @@
 package ru.gb.hw5;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
-public class Note {
+@Entity
+public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String author;
+    @Column(nullable = false)
     private String title;
-    private String content;
+    @Column(nullable = false)
     private Status status;
+    @Column(nullable = false)
     private Date creationDate;
 
     public Long getId() {
         return id;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getTitle() {
@@ -28,14 +26,6 @@ public class Note {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public Status getStatus() {
@@ -52,5 +42,15 @@ public class Note {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", status=" + status +
+                ", creationDate=" + creationDate +
+                '}';
     }
 }
